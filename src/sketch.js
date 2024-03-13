@@ -1,13 +1,18 @@
 let timer = 0;
+let img;
 
+function preload() {
+  img = loadImage('assets/walle-earth copy.png')
+}
 function setup() {
   // For ordering nodes in the DOM
-  let myCanvas = createCanvas(400, 400);
+  let myCanvas = createCanvas(600, 400);
   myCanvas.parent("canvas-parent");
 }
 
 function draw() {
   background(220);
+  drawWalleworld(-50, 0, 0.3)
 
   if (timer > 60 && timer < 100) {
     text("Hi!", 200, 200);
@@ -16,6 +21,14 @@ function draw() {
   
   drawTrash(200, 200, 1.2);
   drawBootplant(0, 100);
+}
+
+function drawWalleworld(x, y, s){
+  push();
+  translate(x, y);
+  scale(s)
+  image(img, 0, 0);
+  pop();
 }
 
 function drawTrash(x, y, s) {
@@ -72,5 +85,4 @@ function drawBootplant(x, y){
   line(218, 84, 225, 92);
   line(218, 84, 227, 81);
 }
-
 
