@@ -14,12 +14,13 @@ function draw() {
   background(220);
   drawWalleworld(-50, 0, 0.3)
 
-  if (timer > 60 && timer < 100) {
-    text("Hi!", 200, 200);
-  }
-  timer++;
+  // if (timer > 60 && timer < 100) {
+  //   text("Hi!", 200, 200);
+  // }
+  // timer++;
   
-  drawTrash(200, 200, 1.2);
+  drawTrashOne(200, 200, 1.2);
+  drawTrashTwo(300, 250, 1);
   drawBootplant(0, 100);
 }
 
@@ -31,11 +32,11 @@ function drawWalleworld(x, y, s){
   pop();
 }
 
-function drawTrash(x, y, s) {
+function drawTrashOne(x, y, s) {
   push();
   scale(s);
   translate(x, y);
-  stroke(80);
+  stroke(70, 50, 30);
   strokeWeight(1);
   fill(155, 130, 130);
   quad(55, 46, 64, 57, 33, 70, 26, 45)
@@ -44,6 +45,27 @@ function drawTrash(x, y, s) {
   fill(190, 150, 120);
   quad(50, 50, 60, 70, 40, 70, 30, 55)
   fill(150, 150, 100);
+  quad(40, 60, 55, 70, 40, 65, 30, 65)
+  
+  pop(); 
+}
+
+function drawTrashTwo(x, y, s) {
+  push();
+  scale(s);
+  //rotate(PI/3);
+  translate(x, y);
+  stroke(30);
+  strokeWeight(1);
+  fill(90);
+  quad(55, 46, 57, 57, 38, 70, 30, 45)
+  fill(130);
+  //fill(120, 90, 70);
+  quad(44, 45, 65, 60, 40, 70, 24, 63)
+  //fill(160, 130, 110);
+  fill(100);
+  quad(50, 50, 60, 70, 40, 70, 30, 55)
+  fill(50);
   quad(40, 60, 55, 70, 40, 65, 30, 65)
   
   pop(); 
