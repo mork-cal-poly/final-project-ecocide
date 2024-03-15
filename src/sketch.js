@@ -17,29 +17,27 @@ function setup() {
 
 function draw() {
   background(220);
-
+  drawWalleworld(-50, 0, 0.3);
   // if (timer > 60 && timer < 100) {
   //   text("Hi!", 200, 200);
   // }
   // timer++;
   drawMarty(100, 100);
-    drawWalleworld(-50, 0, 0.3);  
-    drawTrashOne(200, 200, 1.2);
-    drawTrashTwo(300, 250, 1);
-    drawBootplant(0, 100);
-    
-    drawWalle1(x1);
-    x1 = x1 + 10; 
-    
-    if (x1 >= 750) {
-    drawWalleworld(0, 0, 0.3);
-    drawWalle2(x2);
-    x2 = x2 + 1;
-    if (x2 >= width/2 - 100) {
-      x2 = width/2 - 100;
-    }
-    }
-    
+  drawTrashOne(200, 200, 1.2);
+  drawTrashTwo(300, 250, 1);
+  drawBootplant(0, 100);
+  
+  drawWalle1(x1);
+  x1 = x1 + 10; 
+  
+  if (x1 >= 750) {
+  drawWalleworld(0, 0, 0.3);
+  drawWalle2(x2);
+  x2 = x2 + 1;
+  if (x2 >= width/2 - 100) {
+    x2 = width/2 - 100;
+  }
+  }
   }
   
   function drawWalleworld(x, y, s){
