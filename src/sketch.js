@@ -16,6 +16,7 @@ function draw() {
   drawTrashOne(200, 200, 1.2);
   drawTrashTwo(300, 250, 1);
   drawBootplant(0, 100);
+  drawWalle(x);
 }
 
 function drawWalleworld(x, y, s){
