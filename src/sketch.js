@@ -1,5 +1,6 @@
 let timer = 0;
 let img;
+let x = 200;
 
 function preload() {
   img = loadImage('assets/walle-earth copy.png')
