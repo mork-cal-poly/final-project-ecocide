@@ -18,20 +18,16 @@ function setup() {
 function draw() {
   background(220);
   drawWalleworld(-50, 0, 0.3);
-  // if (timer > 60 && timer < 100) {
-  //   text("Hi!", 200, 200);
-  // }
-  // timer++;
   drawMarty(100, 100);
   drawTrashOne(200, 200, 1.2);
   drawTrashTwo(300, 250, 1);
   drawBootplant(0, 100);
   
   drawWalle1(x1);
-  x1 = x1 + 10; 
+  x1 = x1 + 1; 
   
   if (x1 >= 750) {
-  drawWalleworld(0, 0, 0.3);
+  drawWalleworld(-150, 0, 0.3);
   drawWalle2(x2);
   x2 = x2 + 1;
   if (x2 >= width/2 - 100) {
@@ -40,14 +36,22 @@ function draw() {
   }
   }
   
-  function drawWalleworld(x, y, s){
-    push();
-      translate(x, y);
-      scale(s)
-      image(img, 0, 0);
-    pop();
+function drawWalleworld(worldX, worldY, worldS){
+  push();
+    translate(worldX, worldY);
+    scale(worldS);
+    image(img, 0, 0);
+  pop();
   }
   
+  function drawMarty(martyX, martyY, martyS){
+    push();
+    translate(martyX, martyY);
+    scale(martyS)
+    image(imgone, 0, 0);
+    pop();
+  }
+
   function drawTrashOne(x, y, s) {
     push();
     scale(s);
@@ -88,6 +92,7 @@ function draw() {
   }
   
   function drawEve(eveX, eveY) {
+    push();
     translate(eveX, eveY);
     fill("rgb(255,255,255)");
     arc(0, 0, 85, 250, 0, PI, PIE);
@@ -100,11 +105,12 @@ function draw() {
   
     ellipse(-17, -30, 20, 13);
     ellipse(17, -30, 20, 13);
+    pop();
   }
   
   function drawWalle1(x1){
     push();
-    translate(x1,200);
+    translate(x1,300);
   
     fill(205,171,104);
     quad(-60,0,60,0,60,100,-60,100);
@@ -157,13 +163,13 @@ function draw() {
   // ellipseMode(CENTER);
   // fill(100);
   // ellipse(0, 0, 30, 30);
-    pop()
+    pop();
   
   }
   
   function drawWalle2(x2){
     push();
-    translate(x2,200);
+    translate(x2, 300);
   
     fill(205,171,104);
     quad(-60,0,60,0,60,100,-60,100);
@@ -216,12 +222,12 @@ function draw() {
   // ellipseMode(CENTER);
   // fill(100);
   // ellipse(0, 0, 30, 30);
-    pop()
+    pop();
   
   }
   
   function drawBootplant(x, y){
-    
+    push();
     translate(x, y);
      //plant
     stroke(0, 200, 120);
@@ -255,6 +261,7 @@ function draw() {
     line(226, 86, 216, 90);
     line(218, 84, 225, 92);
     line(218, 84, 227, 81);
+    pop();
   }
   
   
