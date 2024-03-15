@@ -14,9 +14,9 @@ function setup() {
 function draw() {
   background(220);
   drawWalleworld(-50, 0, 0.3);  
-  drawTrashOne(200, 200, 1.2);
-  drawTrashTwo(300, 250, 1);
-  drawBootplant(0, 100);
+  //drawTrashOne(200, 200, 1.2);
+  //drawTrashTwo(300, 250, 1);
+  //drawBootplant(0, 100);
   drawWalle(x);
 }
 
