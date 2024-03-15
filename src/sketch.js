@@ -1,8 +1,10 @@
 let timer = 0;
 let img;
+let imgone;
 
 function preload() {
-  img = loadImage('assets/walle-earth copy.png')
+  img = loadImage('assets/walle-earth copy.png');
+  imgone = loadImage('assets/martyplain.png');
 }
 function setup() {
   // For ordering nodes in the DOM
@@ -18,10 +20,19 @@ function draw() {
   //   text("Hi!", 200, 200);
   // }
   // timer++;
-  
+  drawMarty(100, 100);
   drawTrashOne(200, 200, 1.2);
   drawTrashTwo(300, 250, 1);
   drawBootplant(0, 100);
+}
+
+function drawMarty(x, y, s){
+  push();
+  translate(x, y);
+  scale(s)
+  image(imgone, 0, 0);
+pop();
+
 }
 
 function drawWalleworld(x, y, s){
