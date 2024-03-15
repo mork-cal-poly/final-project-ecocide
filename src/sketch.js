@@ -1,9 +1,11 @@
 let timer = 0;
 let img;
+let imgone;
 let x = 200;
 
 function preload() {
-  img = loadImage('assets/walle-earth copy.png')
+  img = loadImage('assets/walle-earth copy.png');
+  imgone = loadImage('assets/martyplain.png');
 }
 function setup() {
   // For ordering nodes in the DOM
@@ -13,15 +15,31 @@ function setup() {
 
 function draw() {
   background(220);
+  drawWalleworld(-50, 0, 0.3)
+
+  // if (timer > 60 && timer < 100) {
+  //   text("Hi!", 200, 200);
+  // }
+  // timer++;
+  drawMarty(100, 100);
   drawWalleworld(-50, 0, 0.3);  
-  drawTrashOne(200, 200, 1.2);
-  drawTrashTwo(300, 250, 1);
-  drawBootplant(0, 100);
+  //drawTrashOne(200, 200, 1.2);
+  //drawTrashTwo(300, 250, 1);
+  //drawBootplant(0, 100);
   drawWalle(x);
   if (x >= width/2 - 100) {
     x = 0
   } 
   x = x + 1;
+}
+
+function drawMarty(x, y, s){
+  push();
+  translate(x, y);
+  scale(s)
+  image(imgone, 0, 0);
+pop();
+
 }
 
 function drawWalleworld(x, y, s){
@@ -72,6 +90,19 @@ function drawTrashTwo(x, y, s) {
 }
 
 function drawEve(eveX, eveY) {
+    translate(eveX, eveY);
+    fill("rgb(255,255,255)");
+    arc(0, 0, 85, 250, 0, PI, PIE);
+    ellipse(0, -32, 95, 70);
+    ellipse(-45, 55, 20, 100);
+    ellipse(45, 55, 20, 100);
+    fill("rgb(0,0,0)");
+    ellipse(0, -28, 75, 45);
+    fill("rgb(0,223,255)");
+
+    ellipse(-17, -30, 20, 13);
+    ellipse(17, -30, 20, 13);
+
   translate(eveX, eveY);
   fill("rgb(255,255,255)");
   arc(0, 0, 85, 250, 0, PI, PIE);
@@ -152,7 +183,7 @@ function drawBootplant(x, y){
   stroke(0, 200, 120);
   strokeWeight(2.5);
   fill(50, 150, 100);
-  line(230, 55, 230, 100);
+  //line(230, 55, 230, 100);
   rect(220, 56, 8, 5, 60, 65, 70);
   rect(233, 57, 8, 5, 60, 65, 70);
   //boot
@@ -160,6 +191,14 @@ function drawBootplant(x, y){
   fill(150, 120, 80);
   ellipse(200, 99, 24);
   quad(220, 78, 239, 75, 245, 110, 210, 111)
+  //stem
+  stroke(0, 200, 120);
+  strokeWeight(2.5);
+  fill(50, 150, 100);
+  line(230, 55, 230, 80);
+  //other half of boot
+  noStroke();
+  fill(150, 120, 80);
   quad(205, 93, 241, 80, 245, 110, 200, 111)
   //boot outline
   stroke(70, 50, 30);
@@ -169,7 +208,8 @@ function drawBootplant(x, y){
   arc(200, 99, 24, 24, 2*PI/3, 0);
   line(210, 93, 216, 90);
   line(216, 90, 220, 79);
-  line(220, 79, 239, 75);
+  line(220, 79, 228, 77);
+  line(233, 76, 239, 75);
   line(239, 75, 241, 80);
   line(241, 80, 228, 82);
   line(228, 82, 225, 92);
