@@ -18,6 +18,11 @@ function draw() {
   drawTrashTwo(300, 250, 1);
   drawBootplant(0, 100);
   drawWalle(x);
+
+  //heart explosion for loop
+  // for(y = 0 ; y < width ; y++) {
+  //   drawHeart(random(width), random(height), random(0.5, 1.5), color(random(100, 255), random(20, 40), random(70, 90)), color(random(200, 255), random(150, 180), random(180, 200)))
+  // }
 }
 
 function drawWalleworld(x, y, s){
@@ -176,5 +181,24 @@ function drawBootplant(x, y){
   line(226, 86, 216, 90);
   line(218, 84, 225, 92);
   line(218, 84, 227, 81);
+}
+
+function drawHeart(heartX, heartY, heartS, heartC, heartL){
+  push();
+  translate(heartX, heartY);
+  scale(heartS);
+  fill(heartC);
+  noStroke();
+  ellipse(0, 0, 20);
+  ellipse(20, 0, 20);
+  quad(-9, 6, 10, 0, 29, 6, 10, 30);
+  //outline
+  stroke(heartL);
+  strokeWeight(3);
+  line(10, 30, 29, 5);
+  line(10, 30, -9, 5);
+  arc(0, 0, 20, 20, 3*PI/3.8, 6*PI/3.2);
+  arc(20, 0, 20, 20, 3.1*PI, 4*PI/1.85);
+  pop();
 }
 
