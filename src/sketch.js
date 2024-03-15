@@ -26,9 +26,9 @@ function draw() {
 
 function drawWalleworld(x, y, s){
   push();
-  translate(x, y);
-  scale(s)
-  image(img, 0, 0);
+    translate(x, y);
+    scale(s)
+    image(img, 0, 0);
   pop();
 }
 
