@@ -21,7 +21,7 @@ function draw() {
 
   //heart explosion for loop
   // for(y = 0 ; y < width ; y++) {
-  //   drawHeart(random(width), random(height), random(0.5, 1.5), color(random(100, 255), random(20, 40), random(70, 90)), color(random(200, 255), random(150, 180), random(180, 200)))
+  //  drawHeart(random(width), random(height), random(0.5, 1.5), color(random(100, 255), random(20, 40), random(70, 90)), color(random(200, 255), random(150, 180), random(180, 200)))
   // }
 }
 
