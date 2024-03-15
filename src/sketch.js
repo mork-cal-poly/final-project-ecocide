@@ -15,7 +15,6 @@ function setup() {
 
 function draw() {
   background(220);
-  drawWalleworld(-50, 0, 0.3)
 
   // if (timer > 60 && timer < 100) {
   //   text("Hi!", 200, 200);
