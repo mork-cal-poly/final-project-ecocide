@@ -18,6 +18,10 @@ function draw() {
   drawTrashTwo(300, 250, 1);
   drawBootplant(0, 100);
   drawWalle(x);
+  if (x >= width/2 - 100) {
+    x = 0
+  } 
+  x = x + 1;
 }
 
 function drawWalleworld(x, y, s){
