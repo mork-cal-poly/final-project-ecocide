@@ -28,7 +28,7 @@ function draw() {
   drawTrashTwo(100, 260, 1.2);
   drawTrashTwo(300, 310, 1);
   drawWalle1(x1);
-  x1 = x1 + 10;
+  x1++;
 
   if (x1 >= 750) {
     drawWalleworld(-140, 0, 0.3);
@@ -45,7 +45,7 @@ function draw() {
   }
   if (eveX <= width / 2 + 60) {
     eveX = width / 2 + 60;
-    // drawTrashEve();
+    // drawTrashLookingEyes();
     drawTrashOne(220, 260, 1.2);
   }
   if (eveX <= width / 2 + 60) {
@@ -57,7 +57,7 @@ function draw() {
   }
   if (eveX <= width / 2 + 60) {
     drawCleanearth(0, cleanY, 0.35);
-    cleanY = cleanY + 15;
+    cleanY = cleanY + 8;
   }
   if (cleanY >= -250) {
     drawWalle2(width / 2 - 60);
@@ -65,7 +65,7 @@ function draw() {
   }
   if (cleanY >= 5) {
     drawCleanearth(0, 0, 0.35);
-    drawWalleHolding(width/2 - 60);
+    drawWalleHolding(width / 2 - 60);
     drawBootplant(24, 250);
     drawEve(width / 2 + 60);
     noStroke();
@@ -75,12 +75,12 @@ function draw() {
   }
   if (beachY >= 30) {
     drawBeach();
-    drawWalleHolding(width/2);
-    drawBootplant(84, 250);
-    drawEve(width / 2 + 120);
+    drawWalleHolding(width / 2 + 60);
+    drawBootplant(144, 250);
+    drawEve(width / 2 + 160);
     if ((martyY >= 0 && martyY <= 201)) {
       drawMarty(101, martyY, 1);
-      martyY = martyY + 10;
+      martyY = martyY + 8;
     }
     if ((martyY >= 200)) {
       drawMarty(101, 215, 1);
@@ -349,22 +349,6 @@ function drawCleanearth(earthX, earthY, earthS) {
   translate(earthX, earthY);
   scale(earthS);
   image(imgtwo, 0, 0);
-  pop();
-}
-
-function drawTrashEve() {
-  push();
-  translate(width / 2 + 60, 250);
-  fill("rgb(255,255,255)");
-  arc(0, 0, 85, 250, 0, PI, PIE);
-  ellipse(0, -32, 95, 70);
-  ellipse(-45, 55, 20, 100);
-  ellipse(45, 55, 20, 100);
-  fill("rgb(0,0,0)");
-  ellipse(0, -28, 75, 45);
-  fill("rgb(0,223,255)");
-  ellipse(-20, -25, 20, 13);
-  ellipse(14, -25, 20, 13);
   pop();
 }
 
