@@ -1,14 +1,17 @@
 let timer = 0;
 let img;
 let imgone;
+let imgtwo;
 let x = 200;
 let x1 = -100;
 let x2 = -100;
 let eveX = 650;
+let cleanY = -420;
 
 function preload() {
   img = loadImage('assets/walle-earth copy.png');
   imgone = loadImage('assets/martyplain.png');
+  imgtwo = loadImage('assets/wallecleanearth.jpeg');
 }
 function setup() {
   // For ordering nodes in the DOM
@@ -29,24 +32,39 @@ function draw() {
     drawWalleworld(-140, 0, 0.3);
     drawTrashOne(220, 260, 1.2);
     drawWalle2(x2);
-    x2 = x2 + 10;
+    x2++;
     if (x2 >= width / 2 - 60) {
       x2 = width / 2 - 60;
     }
   }
   if (x2 >= -99) {
-    drawEve(eveX, 250);
-    eveX = eveX - 10;
+    drawEve(eveX);
+    eveX--;
   }
   if (eveX <= width / 2 + 60) {
     eveX = width / 2 + 60;
+    // drawTrashEve();
     drawTrashOne(220, 260, 1.2);
   }
   if (eveX <= width / 2 + 60) {
-    drawTrashLookingEyes();
+    for (y = 0; y < width; y++) {
+      drawHeart(random(width), random(height), random(0.5, 1.5), color(random(100, 255), random(20, 40), random(70, 90)), color(random(200, 255), random(150, 180), random(180, 200)))
+    }
+    drawEve(width / 2 + 60, 250);
+    drawWalle2(width / 2 - 60);
   }
-  if (x2 >= width / 2 - 60) {
-    drawWalleLookingEyes();
+  if (eveX <= width / 2 + 60) {
+    drawCleanearth(0, cleanY, 0.35);
+    cleanY = cleanY + 15;
+  }
+  if (cleanY >= -250) {
+    drawWalle2(width / 2 - 60);
+    drawEve(width / 2 + 60);
+  }
+  if (cleanY >= 5) {
+    drawCleanearth(0, 0, 0.35);
+    drawWalle2(width / 2 - 60);
+    drawEve(width / 2 + 60);
   }
 }
 
@@ -103,9 +121,9 @@ function drawTrashTwo(x, y, s) {
   pop();
 }
 
-function drawEve(eveX, eveY) {
+function drawEve(eveX) {
   push();
-  translate(eveX, eveY);
+  translate(eveX, 250);
   fill("rgb(255,255,255)");
   arc(0, 0, 85, 250, 0, PI, PIE);
   ellipse(0, -32, 95, 70);
@@ -257,9 +275,9 @@ function drawBootplant(x, y) {
 
 function drawTrashLookingEyes() {
   push();
-  fill("rgb(0,0,0)");
+  fill(0, 0, 0);
   ellipse(0, -28, 75, 45);
-  fill("rgb(0,223,255)");
+  fill(0, 223, 255);
   ellipse(-20, -25, 20, 13);
   ellipse(14, -25, 20, 13);
   pop();
@@ -267,9 +285,9 @@ function drawTrashLookingEyes() {
 
 function drawWalleLookingEyes() {
   push();
-  fill("rgb(0,0,0)");
+  fill(0, 0, 0);
   ellipse(0, -28, 75, 45);
-  fill("rgb(0,223,255)");
+  fill(0, 223, 255);
   ellipse(-20, -30, 20, 13);
   ellipse(14, -30, 20, 13);
   pop();
@@ -277,11 +295,53 @@ function drawWalleLookingEyes() {
 
 function drawHappyEyes() {
   push();
-  fill("rgb(0,0,0)");
+  fill(0, 0, 0);
   ellipse(0, -28, 75, 45);
-  fill("rgb(0,223,255)");
+  fill(0, 223, 255);
   arc(-17, -28, 20, 15, PI, 0, PIE);
   arc(17, -28, 20, 15, PI, 0, PIE);
   pop();
 }
 
+function drawHeart(heartX, heartY, heartS, heartC, heartL) {
+  push();
+  translate(heartX, heartY);
+  scale(heartS);
+  fill(heartC);
+  noStroke();
+  ellipse(0, 0, 20);
+  ellipse(20, 0, 20);
+  quad(-9, 6, 10, 0, 29, 6, 10, 30);
+  //outline
+  stroke(heartL);
+  strokeWeight(3);
+  line(10, 30, 29, 5);
+  line(10, 30, -9, 5);
+  arc(0, 0, 20, 20, 3 * PI / 3.8, 6 * PI / 3.2);
+  arc(20, 0, 20, 20, 3.1 * PI, 4 * PI / 1.85);
+  pop();
+}
+
+function drawCleanearth(earthX, earthY, earthS) {
+  push();
+  translate(earthX, earthY);
+  scale(earthS);
+  image(imgtwo, 0, 0);
+  pop();
+}
+
+function drawTrashEve() {
+  push();
+  translate(width / 2 + 60, 250);
+  fill("rgb(255,255,255)");
+  arc(0, 0, 85, 250, 0, PI, PIE);
+  ellipse(0, -32, 95, 70);
+  ellipse(-45, 55, 20, 100);
+  ellipse(45, 55, 20, 100);
+  fill("rgb(0,0,0)");
+  ellipse(0, -28, 75, 45);
+  fill("rgb(0,223,255)");
+  ellipse(-20, -25, 20, 13);
+  ellipse(14, -25, 20, 13);
+  pop();
+}
