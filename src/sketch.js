@@ -4,6 +4,7 @@ let imgone;
 let x = 200;
 let x1  = -100;
 let x2 = -100;
+let eveX = 650;
 
 function preload() {
   img = loadImage('assets/walle-earth copy.png');
@@ -18,13 +19,13 @@ function setup() {
 function draw() {
   background(220);
   drawWalleworld(-50, 0, 0.3);
-  // drawMarty(100, 100);
-  // drawTrashOne(200, 200, 1.2);
-  // drawTrashTwo(300, 250, 1);
-  // drawBootplant(0, 100);
+  drawMarty(100, 100);
+  drawTrashOne(200, 200, 1.2);
+  drawTrashTwo(300, 250, 1);
+  drawBootplant(0, 100);
   
   drawWalle1(x1);
-  x1++; 
+  x1 = x1 + 10; 
   
   if (x1 >= 750) {
   drawWalleworld(-150, 0, 0.3);
@@ -35,7 +36,7 @@ function draw() {
   }
   }
   if (x2 >= -99) {
-  drawEve(eveX, 150);
+  drawEve(eveX, 250);
   eveX--;
   }
   if (eveX <= width/2 + 100) {
@@ -79,11 +80,9 @@ function drawWalleworld(worldX, worldY, worldS){
     quad(50, 50, 60, 70, 40, 70, 30, 55)
     fill(150, 150, 100);
     quad(40, 60, 55, 70, 40, 65, 30, 65)
-    
     pop(); 
   }
-  
-  
+
   function drawTrashTwo(x, y, s) {
     push();
     scale(s);
@@ -115,7 +114,7 @@ function drawWalleworld(worldX, worldY, worldS){
     fill("rgb(0,0,0)");
     ellipse(0, -28, 75, 45);
     fill("rgb(0,223,255)");
-  
+
     ellipse(-17, -30, 20, 13);
     ellipse(17, -30, 20, 13);
     pop();
@@ -166,16 +165,6 @@ function drawWalleworld(worldX, worldY, worldS){
     
     fill(255,0,0)
     ellipse(30,15,10,10)
-  
-    
-  
-    
-  // ellipseMode(RADIUS);
-  // fill(255);
-  // ellipse(0, 0, 30, 30);
-  // ellipseMode(CENTER);
-  // fill(100);
-  // ellipse(0, 0, 30, 30);
     pop();
   
   }
@@ -225,18 +214,7 @@ function drawWalleworld(worldX, worldY, worldS){
     
     fill(255,0,0)
     ellipse(30,15,10,10)
-  
-    
-  
-    
-  // ellipseMode(RADIUS);
-  // fill(255);
-  // ellipse(0, 0, 30, 30);
-  // ellipseMode(CENTER);
-  // fill(100);
-  // ellipse(0, 0, 30, 30);
     pop();
-  
   }
   
   function drawBootplant(x, y){
@@ -278,20 +256,33 @@ function drawWalleworld(worldX, worldY, worldS){
   }
   
 function drawTrashLookingEyes() {
+  push();
   fill("rgb(0,0,0)");
   ellipse(0, -28, 75, 45);
   fill("rgb(0,223,255)");
   ellipse(-20, -25, 20, 13);
   ellipse(14, -25, 20, 13);
-  
+  pop();
 }
 
 function drawWalleLookingEyes() {
+  push();
   fill("rgb(0,0,0)");
   ellipse(0, -28, 75, 45);
   fill("rgb(0,223,255)");
   ellipse(-20, -30, 20, 13);
   ellipse(14, -30, 20, 13);
+  pop();
 } 
+
+function drawHappyEyes(){
+  push();
+  fill("rgb(0,0,0)");
+  ellipse(0, -28, 75, 45);
+  fill("rgb(0,223,255)");
+  arc(-17, -28, 20, 15, PI, 0, PIE);
+  arc(17, -28, 20, 15, PI, 0, PIE);
+  pop();
+}
   
   
