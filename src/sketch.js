@@ -7,6 +7,8 @@ let x1 = -100;
 let x2 = -100;
 let eveX = 650;
 let cleanY = -420;
+let martyY = 0;
+let beachY = 0;
 
 function preload() {
   img = loadImage('assets/walle-earth copy.png');
@@ -63,8 +65,27 @@ function draw() {
   }
   if (cleanY >= 5) {
     drawCleanearth(0, 0, 0.35);
-    drawWalle2(width / 2 - 60);
+    drawWalleHolding(width/2 - 60);
+    drawBootplant(24, 250);
     drawEve(width / 2 + 60);
+    noStroke();
+    noFill();
+    ellipse(0, beachY, 10);
+    beachY++;
+  }
+  if (beachY >= 30) {
+    drawBeach();
+    drawWalleHolding(width/2);
+    drawBootplant(84, 250);
+    drawEve(width / 2 + 120);
+    if ((martyY >= 0 && martyY <= 201)) {
+      drawMarty(101, martyY, 1);
+      martyY = martyY + 10;
+    }
+    if ((martyY >= 200)) {
+      drawMarty(101, 215, 1);
+      drawCostume(-100, 0);
+    }
   }
 }
 
@@ -80,7 +101,7 @@ function drawMarty(martyX, martyY, martyS) {
   push();
   translate(martyX, martyY);
   scale(martyS)
-  image(imgone, 0, 0);
+  image(imgone, -151, -156);
   pop();
 }
 
@@ -123,6 +144,7 @@ function drawTrashTwo(x, y, s) {
 
 function drawEve(eveX) {
   push();
+  stroke(0, 0, 0);
   translate(eveX, 250);
   fill("rgb(255,255,255)");
   arc(0, 0, 85, 250, 0, PI, PIE);
@@ -343,5 +365,185 @@ function drawTrashEve() {
   fill("rgb(0,223,255)");
   ellipse(-20, -25, 20, 13);
   ellipse(14, -25, 20, 13);
+  pop();
+}
+
+function drawWalleHolding(holdingX) {
+  push();
+  translate(holdingX, 300)
+  //   if (x >= 200) {
+  //   x = 0
+  // } 
+  // x = x + 1;
+  //ellipse(0,0,50,50);
+  fill(205, 171, 104);
+  quad(-60, 0, 60, 0, 60, 100, -60, 100)
+  // quad(60,100,100,80,100,0,60,0)
+  // fill(0,0,0)
+  //  ellipse(-65,90,40,60)
+  stroke(0, 0, 0)
+  strokeWeight(5)
+  fill(128, 128, 128);
+  ellipse(-65, 100, 40, 60)
+  ellipse(65, 100, 40, 60)
+
+  strokeWeight(1)
+  fill(205, 171, 104);
+  quad(-5, 0, 5, 0, 5, -60, -5, -60)
+
+  quad(60, 5, 70, 5, 70, 55, 60, 55)
+  quad(60, 5, 70, 5, 70, 55, 60, 55)
+  quad(-60, 5, -70, 5, -70, 55, -60, 55)
+  // rotate();
+  //  ellipse(25,-50,40,30)
+  //ellipse(-25,-50,40,30)
+  fill(255, 255, 255)
+  stroke(102, 51, 0)
+  strokeWeight(3)
+  arc(25, -60, 50, 50, 0, 5 * PI / 4, CHORD);
+
+  arc(-25, -60, 50, 50, 7 * PI / 4, PI, CHORD);
+  fill(102, 51, 0)
+  ellipse(-25, -55, 22, 22)
+  ellipse(20, -55, 22, 22)
+  fill(0)
+  ellipse(-25, -55, 20, 20)
+  ellipse(20, -55, 20, 20)
+
+  stroke(0)
+  strokeWeight(1)
+  fill(0, 0, 255)
+  quad(-30, 10, -15, 10, -15, 20, -30, 20)
+
+  fill(255, 0, 0)
+  ellipse(30, 15, 10, 10)
+
+  strokeWeight(1)
+  fill(205, 171, 104);
+  quad(-70, 55, -45, 55, -45, 45, -70, 45)
+  quad(70, 55, 45, 55, 45, 45, 70, 45)
+  strokeWeight(3);
+  stroke(0, 0, 0);
+  fill(128, 128, 128);
+  translate(100, 0);
+  quad(-70, 40, -50, 40, -50, 60, -70, 60);
+  translate(-200, 0);
+  quad(70, 40, 50, 40, 50, 60, 70, 60);
+  pop();
+}
+
+function drawBeach() {
+
+  push();
+  //sky
+  let g = 255
+  let b = 0
+  let sunsetY = 0
+  for (let sunsetY = 0; sunsetY <= height; sunsetY++) {
+    stroke(255, g, b);
+    line(0, sunsetY, width, sunsetY);
+    g = g - 255 / height;
+    b = b + 255 / height;
+  }
+
+  //sun
+  noStroke();
+  fill('#F9BF47')
+  arc(300, 280, 120, 120, PI, 0)
+  fill('#FFDC6F')
+  ellipse(300, 280, 100)
+
+  //ocean
+  fill(0, 80, 150)
+  noStroke();
+  rect(0, 270, width, 80)
+
+  //ocean lines
+  stroke(50, 150, 250);
+  line(0, 280, 60, 280);
+  line(30, 290, 50, 290);
+  line(170, 280, 180, 280);
+  line(240, 300, 280, 300);
+  line(205, 285, 260, 285);
+  line(105, 307, 150, 307);
+  line(375, 325, 400, 325);
+  line(340, 290, 350, 290);
+  line(200, 315, 215, 315);
+  line(335, 300, 385, 300);
+  line(65, 320, 115, 320);
+  line(570, 280, 580, 280);
+  line(540, 300, 580, 300);
+  line(505, 285, 560, 285);
+  line(405, 307, 450, 307);
+  line(480, 320, 525, 320);
+
+  ellipse(200, 360, 40, 20)
+
+  //sand
+  fill("#F5F2DD");
+  noStroke();
+  rect(0, 330, width, 100);
+
+  pop();
+
+}
+
+function drawCostume(costumeX, costumeY) {
+  push();
+  translate(costumeX, costumeY);
+  // afro
+  noStroke();
+  fill(20, 250, 160);
+  ellipse(280, 130, 40);
+  fill(250, 230, 0);
+  ellipse(250, 130, 30);
+  fill(200, 20, 20);
+  ellipse(225, 155, 20);
+  fill(200, 0, 70);
+  ellipse(235, 180, 40);
+  fill(255, 190, 0);
+  ellipse(250, 150, 50);
+  fill(255, 70, 70);
+  ellipse(250, 165, 40);
+  ellipse(230, 155, 20);
+  fill(250, 70, 70);
+  ellipse(240, 180, 30);
+  fill(250, 250, 0);
+  ellipse(270, 140, 25);
+  ellipse(270, 160, 25);
+  fill(255, 200, 0);
+  ellipse(255, 150, 20);
+  fill(255, 200, 0);
+  ellipse(260, 165, 25);
+  fill(255, 255, 0)
+  ellipse(290, 165, 15);
+  fill(20, 250, 160);
+  ellipse(300, 173, 10);
+  ellipse(300, 150, 30);
+  fill(250, 250, 0);
+  ellipse(280, 150, 30);
+  fill(20, 250, 160);
+  ellipse(305, 165, 15);
+
+  //polka dots 
+  fill(255, 200, 0);
+  ellipse(180, 220, 10, 13);
+  fill(250, 100, 250);
+  ellipse(250, 220, 10);
+  fill(20, 250, 160)
+  ellipse(190, 190, 10);
+  fill(240, 190, 255);
+  ellipse(215, 255, 11, 9);
+  fill(100, 200, 255);
+  ellipse(150, 190, 11, 9);
+
+  //tassles
+  fill('#FC97B2');
+  quad(135, 160, 145, 170, 145, 175, 135, 185);
+  quad(120, 202, 130, 207, 130, 212, 122, 223);
+  quad(200, 285, 207, 285, 210, 295, 190, 290);
+  quad(202, 325, 208, 325, 215, 335, 190, 335);
+  fill(100, 210, 250)
+  quad(160, 130, 185, 127, 185, 133, 168, 145)
   pop();
 }
