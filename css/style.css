@@ -13,3 +13,7 @@ body {
   justify-content: center;
   flex-direction: column;
 }
+
+p.instructions {
+  font-family: 'Courier New', Courier, monospace;
+}
