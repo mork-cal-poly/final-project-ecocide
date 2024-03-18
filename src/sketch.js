@@ -18,23 +18,36 @@ function setup() {
 function draw() {
   background(220);
   drawWalleworld(-50, 0, 0.3);
-  drawMarty(100, 100);
-  drawTrashOne(200, 200, 1.2);
-  drawTrashTwo(300, 250, 1);
-  drawBootplant(0, 100);
+  // drawMarty(100, 100);
+  // drawTrashOne(200, 200, 1.2);
+  // drawTrashTwo(300, 250, 1);
+  // drawBootplant(0, 100);
   
   drawWalle1(x1);
-  x1 = x1 + 1; 
+  x1++; 
   
   if (x1 >= 750) {
   drawWalleworld(-150, 0, 0.3);
   drawWalle2(x2);
-  x2 = x2 + 1;
+  x2++;
   if (x2 >= width/2 - 100) {
     x2 = width/2 - 100;
   }
   }
+  if (x2 >= -99) {
+  drawEve(eveX, 150);
+  eveX--;
   }
+  if (eveX <= width/2 + 100) {
+    eveX = width/2 + 100;
+  }
+  if (eveX <= width/2 + 100) {
+    drawTrashLookingEyes();
+  }
+  if (x2 >= width/2 - 100) {
+    drawWalleLookingEyes();
+  }
+}
   
 function drawWalleworld(worldX, worldY, worldS){
   push();
@@ -263,5 +276,22 @@ function drawWalleworld(worldX, worldY, worldS){
     line(218, 84, 227, 81);
     pop();
   }
+  
+function drawTrashLookingEyes() {
+  fill("rgb(0,0,0)");
+  ellipse(0, -28, 75, 45);
+  fill("rgb(0,223,255)");
+  ellipse(-20, -25, 20, 13);
+  ellipse(14, -25, 20, 13);
+  
+}
+
+function drawWalleLookingEyes() {
+  fill("rgb(0,0,0)");
+  ellipse(0, -28, 75, 45);
+  fill("rgb(0,223,255)");
+  ellipse(-20, -30, 20, 13);
+  ellipse(14, -30, 20, 13);
+} 
   
   
