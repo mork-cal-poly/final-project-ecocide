@@ -4,12 +4,15 @@ let imgone;
 let imgtwo;
 let x = 200;
 let x1 = -100;
-let x2 = -100;
+// let x2 = -100;
 let eveX = 650;
 let earthS = 0;
 let martyY = 0;
 let beachY = 0;
 let clicked = false;
+
+let scene = 0;
+let t = 0;
 
 function preload() {
   img = loadImage('assets/walle-earth copy.png');
@@ -24,62 +27,85 @@ function setup() {
 
 function draw() {
   background(220);
+  if (scene == 0) {
+    scene1();
+  } else if (scene == 1) {
+    scene2();
+  } else {
+    scene3();
+  }
+
+  // switch from scene 1 to 2
+  if (x1 >=750) {
+    scene = 1;
+    x1 = -100;
+    t = 0;
+  } else if (t > 20 && scene == 1) { // scene 2 to 3
+    scene = 2;
+    t = 0;
+  }
+
+
+
+}
+
+function scene1() {
+  console.log("scene 1!!!");
   drawWalleworld(-100, 0, 0.3);
 
   drawTrashTwo(100, 260, 1.2);
   drawTrashTwo(300, 310, 1);
-  if (clicked) {
-  drawWalle1(x1);
-  x1++;
 
-  if (x1 >= 750) {
-    drawWalleworld(-140, 0, 0.3);
-    drawTrashOne(220, 260, 1.2);
-    drawWalle2(x2);
-    x2++;
-    if (x2 >= width / 2 - 60) {
-      x2 = width / 2 - 60;
-    }
+  if (clicked) {
+    drawWalle1(x1);
+    x1+=10;
   }
-  if (x2 >= -99) {
-    drawEve(eveX);
+}
+function scene2() {
+  console.log("scene 2!!!");
+  drawWalleworld(-140, 0, 0.3);
+
+
+  drawWalle1(x1);
+  if (x1 < width / 2 - 60) {
+    x1++;
+  }
+
+  drawEve(eveX);
+  if (eveX > width / 2 + 60) {
     eveX--;
+  } else {
+    t++;
   }
-  if (eveX <= width / 2 + 60) {
-    eveX = width / 2 + 60;
-    // drawTrashLookingEyes();
-    drawTrashOne(220, 260, 1.2);
+
+  drawTrashOne(220, 260, 1.2);
+
+
+}
+function scene3() {
+  drawWalleworld(-140, 0, 0.3);
+  for (y = 0; y < width; y++) {
+    drawHeart(random(width), random(height), random(0.5, 1.5), color(random(100, 255), random(20, 40), random(70, 90)), color(random(200, 255), random(150, 180), random(180, 200)))
   }
-  if (eveX <= width / 2 + 60) {
-    for (y = 0; y < width; y++) {
-      drawHeart(random(width), random(height), random(0.5, 1.5), color(random(100, 255), random(20, 40), random(70, 90)), color(random(200, 255), random(150, 180), random(180, 200)))
-    }
-    drawEve(width / 2 + 60, 250);
-    drawWalle2(width / 2 - 60);
-  }
-  if (eveX <= width / 2 + 60) {
-    drawCleanearth(0, 0, earthS);
+
+  drawCleanearth(0, 0, earthS);
+  if (earthS <= 0.35) {
     earthS = earthS + 0.01;
+    drawWalle1(x1);
+    drawEve(eveX);
+  } else {
+    drawWalleHolding(x1);
+    drawBootplant(0, 250);
+    drawEve(eveX);
+    console.log("here: " + t);
+    t++;
   }
-  if (earthS >= 0.15) {
-    drawWalle2(width / 2 - 60);
-    drawEve(width / 2 + 60);
-  }
-  if (earthS >= 0.35) {
-    drawCleanearth(0, 0, 0.35);
-    drawWalleHolding(width / 2 - 60);
-    drawBootplant(24, 250);
-    drawEve(width / 2 + 60);
-    noStroke();
-    noFill();
-    ellipse(0, beachY, 10);
-    beachY++;
-  }
-  if (beachY >= 30) {
+  if (t > 30) {
+    console.log("HERE");
     drawBeach();
-    drawWalleHolding(width / 2 + 60);
-    drawBootplant(144, 250);
-    drawEve(width / 2 + 160);
+    drawWalleHolding(x1);
+    drawBootplant(0, 250);
+    drawEve(eveX);
     if ((martyY >= 0 && martyY <= 201)) {
       drawMarty(101, martyY, 1);
       martyY = martyY + 8;
@@ -89,9 +115,16 @@ function draw() {
       drawCostume(-100, 0);
     }
   }
-}
-}
 
+
+
+  drawEve(eveX);
+
+
+
+
+
+}
 function drawWalleworld(worldX, worldY, worldS) {
   push();
   translate(worldX, worldY);
@@ -158,8 +191,13 @@ function drawEve(eveX) {
   ellipse(0, -28, 75, 45);
   fill("rgb(0,223,255)");
 
-  ellipse(-17, -30, 20, 13);
-  ellipse(17, -30, 20, 13);
+  if (eveX <= width / 2 + 60 && scene == 1) {
+    drawTrashLookingEyes();
+
+  } else {
+    ellipse(-17, -30, 20, 13);
+    ellipse(17, -30, 20, 13);
+  }
   pop();
 }
 
