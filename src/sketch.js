@@ -36,7 +36,7 @@ function draw() {
   }
 
   // switch from scene 1 to 2
-  if (x1 >=750) {
+  if (x1 >= 750) {
     scene = 1;
     x1 = -100;
     t = 0;
@@ -58,7 +58,7 @@ function scene1() {
 
   if (clicked) {
     drawWalle1(x1);
-    x1++;
+    x1 = x1 + 2;
   }
 }
 function scene2() {
@@ -68,12 +68,12 @@ function scene2() {
 
   drawWalle1(x1);
   if (x1 < width / 2 - 60) {
-    x1++;
+    x1 = x1 + 2;
   }
 
   drawEve(eveX);
   if (eveX > width / 2 + 60) {
-    eveX--;
+    eveX = eveX - 2;
   } else {
     t++;
   }
@@ -95,7 +95,7 @@ function scene3() {
     drawEve(eveX);
   } else {
     drawWalleHolding(x1);
-    drawBootplant(0, 250);
+    drawBootplant(15, 250);
     drawEve(eveX);
     console.log("here: " + t);
     t++;
@@ -103,9 +103,10 @@ function scene3() {
   if (t > 30) {
     console.log("HERE");
     drawBeach();
-    drawWalleHolding(x1);
-    drawBootplant(0, 250);
-    drawEve(eveX);
+    drawWalleHolding(x1 + 80);
+    drawBootplant(95, 250);
+    drawEve(eveX + 80);
+    drawHappyEyes();
     if ((martyY >= 0 && martyY <= 201)) {
       drawMarty(101, martyY, 1);
       martyY = martyY + 8;
@@ -115,15 +116,6 @@ function scene3() {
       drawCostume(-100, 0);
     }
   }
-
-
-
-  drawEve(eveX);
-
-
-
-
-
 }
 function drawWalleworld(worldX, worldY, worldS) {
   push();
@@ -193,10 +185,21 @@ function drawEve(eveX) {
 
   if (eveX <= width / 2 + 60 && scene == 1) {
     drawTrashLookingEyes();
-
+    if (x1 >= width / 2 - 61) {
+      drawWalleLookingEyes();
+    }
+  } else if (x1 >= 60) {
+    drawWalleLookingEyes();
   } else {
     ellipse(-17, -30, 20, 13);
     ellipse(17, -30, 20, 13);
+  }
+  if (scene == 2) {
+    fill(0, 0, 0);
+    ellipse(0, -28, 75, 45);
+    fill(0, 223, 255);
+    arc(-17, -28, 20, 15, PI, 0, PIE);
+    arc(17, -28, 20, 15, PI, 0, PIE);
   }
   pop();
 }
@@ -402,7 +405,7 @@ function drawWalleHolding(holdingX) {
   // x = x + 1;
   //ellipse(0,0,50,50);
   strokeWeight(1)
-  stroke(0,0,0)
+  stroke(0, 0, 0)
   fill(205, 171, 104);
   quad(-60, 0, 60, 0, 60, 100, -60, 100)
   // quad(60,100,100,80,100,0,60,0)
@@ -578,9 +581,9 @@ function drawCostume(costumeX, costumeY) {
 
 function mouseClicked() {
   if (mouseX < 600 &&
-      mouseX > 0 && 
-      mouseY > 350 && 
-      mouseY < 400) {
+    mouseX > 0 &&
+    mouseY > 350 &&
+    mouseY < 400) {
     clicked = !clicked;
     y = 0;
   }
