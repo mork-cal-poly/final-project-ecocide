@@ -6,9 +6,10 @@ let x = 200;
 let x1 = -100;
 let x2 = -100;
 let eveX = 650;
-let cleanY = -420;
+let earthS = 0;
 let martyY = 0;
 let beachY = 0;
+let clicked = false;
 
 function preload() {
   img = loadImage('assets/walle-earth copy.png');
@@ -27,6 +28,7 @@ function draw() {
 
   drawTrashTwo(100, 260, 1.2);
   drawTrashTwo(300, 310, 1);
+  if (clicked) {
   drawWalle1(x1);
   x1++;
 
@@ -56,14 +58,14 @@ function draw() {
     drawWalle2(width / 2 - 60);
   }
   if (eveX <= width / 2 + 60) {
-    drawCleanearth(0, cleanY, 0.35);
-    cleanY = cleanY + 8;
+    drawCleanearth(0, 0, earthS);
+    earthS = earthS + 0.01;
   }
-  if (cleanY >= -250) {
+  if (earthS >= 0.35) {
     drawWalle2(width / 2 - 60);
     drawEve(width / 2 + 60);
   }
-  if (cleanY >= 5) {
+  if (earthS >= 0.35) {
     drawCleanearth(0, 0, 0.35);
     drawWalleHolding(width / 2 - 60);
     drawBootplant(24, 250);
@@ -87,6 +89,7 @@ function draw() {
       drawCostume(-100, 0);
     }
   }
+}
 }
 
 function drawWalleworld(worldX, worldY, worldS) {
@@ -530,4 +533,14 @@ function drawCostume(costumeX, costumeY) {
   fill(100, 210, 250)
   quad(160, 130, 185, 127, 185, 133, 168, 145)
   pop();
+}
+
+function mouseClicked() {
+  if (mouseX < 600 &&
+      mouseX > 0 && 
+      mouseY > 350 && 
+      mouseY < 400) {
+    clicked = !clicked;
+    y = 0;
+  }
 }
