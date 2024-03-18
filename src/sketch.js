@@ -58,7 +58,7 @@ function scene1() {
 
   if (clicked) {
     drawWalle1(x1);
-    x1+=10;
+    x1++;
   }
 }
 function scene2() {
