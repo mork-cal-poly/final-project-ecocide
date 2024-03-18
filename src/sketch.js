@@ -61,7 +61,7 @@ function draw() {
     drawCleanearth(0, 0, earthS);
     earthS = earthS + 0.01;
   }
-  if (earthS >= 0.35) {
+  if (earthS >= 0.15) {
     drawWalle2(width / 2 - 60);
     drawEve(width / 2 + 60);
   }
@@ -363,6 +363,8 @@ function drawWalleHolding(holdingX) {
   // } 
   // x = x + 1;
   //ellipse(0,0,50,50);
+  strokeWeight(1)
+  stroke(0,0,0)
   fill(205, 171, 104);
   quad(-60, 0, 60, 0, 60, 100, -60, 100)
   // quad(60,100,100,80,100,0,60,0)
@@ -374,6 +376,7 @@ function drawWalleHolding(holdingX) {
   ellipse(-65, 100, 40, 60)
   ellipse(65, 100, 40, 60)
 
+  stroke(0, 0, 0)
   strokeWeight(1)
   fill(205, 171, 104);
   quad(-5, 0, 5, 0, 5, -60, -5, -60)
@@ -404,7 +407,7 @@ function drawWalleHolding(holdingX) {
 
   fill(255, 0, 0)
   ellipse(30, 15, 10, 10)
-
+  stroke(0, 0, 0)
   strokeWeight(1)
   fill(205, 171, 104);
   quad(-70, 55, -45, 55, -45, 45, -70, 45)
